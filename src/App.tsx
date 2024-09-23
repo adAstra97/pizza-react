@@ -1,34 +1,31 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+// import reactLogo from './assets/react.svg';
+// import viteLogo from '/vite.svg';
+import { Categories } from './components/Categories/Categories';
+import { Header } from './components/Header/Header';
+import PizzaItem from './components/PizzaItem/PizzaItem';
+import { Sort } from './components/Sort/Sort';
+import { pizzaList } from './mocks/pizza.mock';
+import './scss/app.scss';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="wrapper">
+      <Header />
+      <div className="content">
+        <div className="container">
+          <div className="content__top">
+            <Categories />
+            <Sort />
+          </div>
+          <h2 className="content__title">Все пиццы</h2>
+          <div className="content__items">
+            {pizzaList.map(item => (
+              <PizzaItem key={item.id} pizza={item} />
+            ))}
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
 
