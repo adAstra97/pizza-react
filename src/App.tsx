@@ -1,13 +1,40 @@
-// import reactLogo from './assets/react.svg';
-// import viteLogo from '/vite.svg';
+import { useEffect, useState } from 'react';
 import { Categories } from './components/Categories/Categories';
 import { Header } from './components/Header/Header';
 import PizzaItem from './components/PizzaItem/PizzaItem';
 import { Sort } from './components/Sort/Sort';
-import { pizzaList } from './mocks/pizza.mock';
 import './scss/app.scss';
+import { IPizza } from './models/pizza.model';
 
 function App() {
+  const [pizzasData, setPizzasData] = useState<IPizza[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(import.meta.env.VITE_API_URL);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const jsonData = await response.json();
+        setPizzasData(jsonData);
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError('An unknown error occurred');
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div className="wrapper">
       <Header />
@@ -19,7 +46,7 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            {pizzaList.map(item => (
+            {pizzasData.map(item => (
               <PizzaItem key={item.id} pizza={item} />
             ))}
           </div>
