@@ -4,7 +4,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 0,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif',
+      'https://i.ibb.co/yYWrsRB/11-EE7-D612-FC7-B7-FCA5-BE822752-BEE1-E5.jpg',
     title: 'Пепперони Фреш с перцем',
     types: [0, 1],
     sizes: [26, 30, 40],
@@ -15,7 +15,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 1,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif',
+      'https://i.ibb.co/xGgVRzL/11-EE7-D610-D2925109-AB2-E1-C92-CC5383-C.jpg',
     title: 'Сырная',
     types: [0],
     sizes: [26, 40],
@@ -26,7 +26,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 2,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D6110059795842D40396BCF1E73.avif',
+      'https://i.ibb.co/TmzHXQQ/11-EE7-D6110059795842-D40396-BCF1-E73.jpg',
     title: 'Цыпленок барбекю',
     types: [0],
     sizes: [26, 40],
@@ -37,7 +37,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 3,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.avif',
+      'https://i.ibb.co/QH5FpSX/11-EE7-D610-BBEB562-BD4-D48786-AD87270.jpg',
     title: 'Кисло-сладкий цыпленок',
     types: [1],
     sizes: [26, 30, 40],
@@ -48,7 +48,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 4,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D61698827EE9B8DB6D0AEC53410.avif',
+      'https://i.ibb.co/k939hBy/11-EE7-D61698827-EE9-B8-DB6-D0-AEC53410.jpg',
     title: 'Чизбургер-пицца',
     types: [0, 1],
     sizes: [26, 30, 40],
@@ -59,7 +59,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 5,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D6122BB3424B593BB15EACE3197.avif',
+      'https://i.ibb.co/6Wwrdt0/11-EE7-D6122-BB3424-B593-BB15-EACE3197.jpg',
     title: 'Крэйзи пепперони',
     types: [0],
     sizes: [30, 40],
@@ -70,7 +70,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 6,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D610A62D78598406363A9A8AD65.avif',
+      'https://i.ibb.co/fnnGyvR/11-EE7-D610-A62-D78598406363-A9-A8-AD65.jpg',
     title: 'Пепперони',
     types: [0, 1],
     sizes: [26, 30, 40],
@@ -81,7 +81,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 7,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D6105EF6690B86FBDE6150B5B0C.avif',
+      'https://i.ibb.co/WKxVFg8/11-EE7-D6105-EF6690-B86-FBDE6150-B5-B0-C.jpg',
     title: 'Маргарита',
     types: [0, 1],
     sizes: [26, 30, 40],
@@ -92,7 +92,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 8,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D611ADF5AAD898B8B651186E023.avif',
+      'https://i.ibb.co/X8gKWYp/11-EE7-D611-ADF5-AAD898-B8-B651186-E023.jpg',
     title: 'Четыре сезона',
     types: [0, 1],
     sizes: [26, 30, 40],
@@ -103,7 +103,7 @@ export const pizzaList: IPizza[] = [
   {
     id: 9,
     imageUrl:
-      'https://media.dodostatic.net/image/r:292x292/11EE7D61546D8483A61A0BBAA7ADCC78.avif',
+      'https://i.ibb.co/JW1xyxb/11-EE7-D61546-D8483-A61-A0-BBAA7-ADCC78.jpg',
     title: 'Овощи и грибы 🌱',
     types: [0, 1],
     sizes: [26, 30, 40],
