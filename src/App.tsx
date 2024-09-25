@@ -1,55 +1,21 @@
-import { useEffect, useState } from 'react';
-import { Categories } from './components/Categories/Categories';
+import { Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header/Header';
-import PizzaItem from './components/PizzaItem/PizzaItem';
-import { Sort } from './components/Sort/Sort';
+import { Home } from './pages/Home';
 import './scss/app.scss';
-import { IPizza } from './models/pizza.model';
+import { NotFound } from './pages/NotFound';
+import { Cart } from './pages/Cart';
 
 function App() {
-  const [pizzasData, setPizzasData] = useState<IPizza[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(import.meta.env.VITE_API_URL);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const jsonData = await response.json();
-        setPizzasData(jsonData);
-      } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message);
-        } else {
-          setError('An unknown error occurred');
-        }
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (error) return <p>Error: {error}</p>;
-
   return (
     <div className="wrapper">
       <Header />
       <div className="content">
         <div className="container">
-          <div className="content__top">
-            <Categories />
-            <Sort />
-          </div>
-          <h2 className="content__title">Все пиццы</h2>
-          <div className="content__items">
-            {pizzasData.map(item => (
-              <PizzaItem key={item.id} pizza={item} />
-            ))}
-          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
       </div>
     </div>

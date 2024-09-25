@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { IPizza } from '../../models/pizza.model';
 
-const PizzaItem = ({ pizza }: { pizza: IPizza }) => {
+interface PizzaItemProps {
+  pizza: IPizza;
+}
+
+const PizzaItem: React.FC<PizzaItemProps> = ({ pizza }: { pizza: IPizza }) => {
   const { imageUrl, title, price, types, sizes } = pizza;
 
   const [activeSize, setActiveSize] = useState<number>(0);
