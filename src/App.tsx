@@ -5,13 +5,15 @@ import PizzaItem from './components/PizzaItem/PizzaItem';
 import { Sort } from './components/Sort/Sort';
 import './scss/app.scss';
 import { IPizza } from './models/pizza.model';
+import { Skeleton } from './components/PizzaItem/Skeleton';
 
 function App() {
   const [pizzasData, setPizzasData] = useState<IPizza[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       try {
         const response = await fetch(import.meta.env.VITE_API_URL);
 
@@ -21,6 +23,7 @@ function App() {
 
         const jsonData = await response.json();
         setPizzasData(jsonData);
+        setIsLoading(false);
       } catch (error) {
         if (error instanceof Error) {
           setError(error.message);
@@ -46,9 +49,11 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            {pizzasData.map(item => (
-              <PizzaItem key={item.id} pizza={item} />
-            ))}
+            {isLoading
+              ? [...new Array(10)].map((_, index) => <Skeleton key={index} />)
+              : pizzasData.map(item => (
+                  <PizzaItem key={item.id} pizza={item} />
+                ))}
           </div>
         </div>
       </div>
