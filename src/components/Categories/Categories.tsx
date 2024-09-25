@@ -9,7 +9,7 @@ const caterogies: string[] = [
   'Закрытые',
 ];
 
-export const Categories = () => {
+export const Categories: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<number>(0);
 
   const handleActiveCategory = (index: number): void => {

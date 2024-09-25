@@ -1,3 +1,9 @@
+import { NotFoundInfo } from '../components/NotFoundInfo/NotFoundInfo';
+
 export const NotFound = () => {
-  return <h1>Ничего не найдено</h1>;
+  return (
+    <>
+      <NotFoundInfo />;
+    </>
+  );
 };
