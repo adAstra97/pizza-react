@@ -22,6 +22,8 @@ export const Home = () => {
         const jsonData = await response.json();
         setPizzasData(jsonData);
         setIsLoading(false);
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } catch (error) {
         if (error instanceof Error) {
           setError(error.message);
@@ -36,7 +38,7 @@ export const Home = () => {
 
   if (error) return <p>Error: {error}</p>;
   return (
-    <>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />
@@ -47,6 +49,6 @@ export const Home = () => {
           ? [...new Array(10)].map((_, index) => <Skeleton key={index} />)
           : pizzasData.map(item => <PizzaItem key={item.id} pizza={item} />)}
       </div>
-    </>
+    </div>
   );
 };
