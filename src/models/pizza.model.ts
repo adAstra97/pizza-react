@@ -5,6 +5,6 @@ export interface IPizza {
   types: number[];
   sizes: number[];
   price: number;
-  category: number;
+  category: number[];
   rating: number;
 }
