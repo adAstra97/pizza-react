@@ -7,6 +7,9 @@ import PizzaItem from '../components/PizzaItem/PizzaItem';
 
 export const Home = () => {
   const [pizzasData, setPizzasData] = useState<IPizza[]>([]);
+  const [activeCategory, setActiveCategory] = useState<number>(0);
+  const [activeSortType, setSortType] = useState<number>(0);
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,8 +43,14 @@ export const Home = () => {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories />
-        <Sort />
+        <Categories
+          activeCategory={activeCategory}
+          setActiveCategory={(id: number) => setActiveCategory(id)}
+        />
+        <Sort
+          activeSortType={activeSortType}
+          setSortType={(id: number) => setSortType(id)}
+        />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

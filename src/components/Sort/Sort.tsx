@@ -2,10 +2,14 @@ import { useState } from 'react';
 import upArrow from '../../assets/up-arrow.svg';
 import downArrow from '../../assets/bottom-arrow.svg';
 
+interface SortProps {
+  activeSortType: number;
+  setSortType: (id: number) => void;
+}
+
 const sortTypes = ['популярности', 'цене', 'алфавиту'];
 
-export const Sort = () => {
-  const [activeSortType, setSortType] = useState<number>(0);
+export const Sort: React.FC<SortProps> = ({ activeSortType, setSortType }) => {
   const [isVisibleSort, setIsVisibleSort] = useState<boolean>(false);
   const [isAscending, setIsAscending] = useState<boolean>(true);
   const sortName = sortTypes[activeSortType];
