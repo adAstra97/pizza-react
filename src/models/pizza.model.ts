@@ -8,3 +8,8 @@ export interface IPizza {
   category: number[];
   rating: number;
 }
+
+export interface ISortType {
+  name: string;
+  sortBy: string;
+}

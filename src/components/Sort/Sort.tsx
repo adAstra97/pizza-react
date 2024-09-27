@@ -1,21 +1,31 @@
 import { useState } from 'react';
 import upArrow from '../../assets/up-arrow.svg';
 import downArrow from '../../assets/bottom-arrow.svg';
+import { ISortType } from '../../models/pizza.model';
 
 interface SortProps {
-  activeSortType: number;
-  setSortType: (id: number) => void;
+  activeSortType: ISortType;
+  isAscending: boolean;
+  setSortType: (id: ISortType) => void;
+  setIsAscending: (value: boolean) => void;
 }
 
-const sortTypes = ['популярности', 'цене', 'алфавиту'];
+const sortTypes: ISortType[] = [
+  { name: 'популярности', sortBy: 'rating' },
+  { name: 'цене', sortBy: 'price' },
+  { name: 'алфавиту', sortBy: 'title' },
+];
 
-export const Sort: React.FC<SortProps> = ({ activeSortType, setSortType }) => {
+export const Sort: React.FC<SortProps> = ({
+  activeSortType,
+  setSortType,
+  isAscending,
+  setIsAscending,
+}) => {
   const [isVisibleSort, setIsVisibleSort] = useState<boolean>(false);
-  const [isAscending, setIsAscending] = useState<boolean>(true);
-  const sortName = sortTypes[activeSortType];
 
-  const handleVisibleSort = (index: number): void => {
-    setSortType(index);
+  const handleVisibleSort = (sortType: ISortType): void => {
+    setSortType(sortType);
     setIsVisibleSort(!isVisibleSort);
   };
 
@@ -27,7 +37,9 @@ export const Sort: React.FC<SortProps> = ({ activeSortType, setSortType }) => {
     <div className="sort">
       <div className="sort__label">
         <b>Сортировка по:</b>
-        <span onClick={() => setIsVisibleSort(!isVisibleSort)}>{sortName}</span>
+        <span onClick={() => setIsVisibleSort(!isVisibleSort)}>
+          {activeSortType.name}
+        </span>
         <div className="sort__direction">
           <button onClick={() => toggleSortingDirection()}>
             {isAscending ? <img src={upArrow} /> : <img src={downArrow} />}
@@ -39,10 +51,12 @@ export const Sort: React.FC<SortProps> = ({ activeSortType, setSortType }) => {
           <ul>
             {sortTypes.map((sortType, index) => (
               <li
-                onClick={() => handleVisibleSort(index)}
-                className={activeSortType === index ? 'active' : ''}
+                onClick={() => handleVisibleSort(sortType)}
+                className={
+                  activeSortType.sortBy === sortType.sortBy ? 'active' : ''
+                }
                 key={index}>
-                {sortType}
+                {sortType.name}
               </li>
             ))}
           </ul>
