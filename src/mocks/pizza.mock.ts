@@ -9,7 +9,7 @@ export const pizzaList: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 803,
-    category: [1, 4],
+    category: [0, 1, 4],
     rating: 4,
   },
   {
@@ -20,7 +20,7 @@ export const pizzaList: IPizza[] = [
     types: [0],
     sizes: [26, 40],
     price: 245,
-    category: [2],
+    category: [0, 2],
     rating: 6,
   },
   {
@@ -31,7 +31,7 @@ export const pizzaList: IPizza[] = [
     types: [0],
     sizes: [26, 40],
     price: 295,
-    category: [1, 3],
+    category: [0, 1, 3],
     rating: 4,
   },
   {
@@ -42,7 +42,7 @@ export const pizzaList: IPizza[] = [
     types: [1],
     sizes: [26, 30, 40],
     price: 275,
-    category: [1],
+    category: [0, 1],
     rating: 2,
   },
   {
@@ -53,7 +53,7 @@ export const pizzaList: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 415,
-    category: [1],
+    category: [0, 1],
     rating: 8,
   },
   {
@@ -64,7 +64,7 @@ export const pizzaList: IPizza[] = [
     types: [0],
     sizes: [30, 40],
     price: 580,
-    category: [1, 4],
+    category: [0, 1, 4],
     rating: 2,
   },
   {
@@ -75,7 +75,7 @@ export const pizzaList: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 675,
-    category: [1, 4],
+    category: [0, 1, 4],
     rating: 9,
   },
   {
@@ -86,7 +86,7 @@ export const pizzaList: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 450,
-    category: [2],
+    category: [0, 2],
     rating: 10,
   },
   {
@@ -97,7 +97,7 @@ export const pizzaList: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 395,
-    category: [1, 2, 3],
+    category: [0, 1, 2, 3],
     rating: 10,
   },
   {
@@ -108,7 +108,7 @@ export const pizzaList: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 285,
-    category: [2],
+    category: [0, 2],
     rating: 7,
   },
 ];
