@@ -97,7 +97,7 @@ export const pizzaList: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 395,
-    category: [0, 1, 2, 3],
+    category: [0, 1, 3],
     rating: 10,
   },
   {

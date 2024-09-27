@@ -11,35 +11,40 @@ export const Home = () => {
   const [activeSortType, setSortType] = useState<number>(0);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await fetch(import.meta.env.VITE_API_URL);
+        setIsLoading(true);
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}?category=${activeCategory}`,
+        );
 
-        if (!response.ok) {
+        if (response.status === 404) {
+          setErrorMessage('Пиццы не найдены :(');
+          setPizzasData([]);
+        } else if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+          const jsonData = await response.json();
+          setErrorMessage(null);
+          setPizzasData(jsonData);
         }
 
-        const jsonData = await response.json();
-        setPizzasData(jsonData);
         setIsLoading(false);
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       } catch (error) {
         if (error instanceof Error) {
-          setError(error.message);
+          setErrorMessage(error.message);
         } else {
-          setError('An unknown error occurred');
+          setErrorMessage('An unknown error occurred');
         }
       }
     };
 
     fetchData();
-  }, []);
+  }, [activeCategory]);
 
-  if (error) return <p>Error: {error}</p>;
   return (
     <div className="container">
       <div className="content__top">
@@ -54,9 +59,13 @@ export const Home = () => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
-        {isLoading
-          ? [...new Array(10)].map((_, index) => <Skeleton key={index} />)
-          : pizzasData.map(item => <PizzaItem key={item.id} pizza={item} />)}
+        {isLoading ? (
+          [...new Array(10)].map((_, index) => <Skeleton key={index} />)
+        ) : errorMessage ? (
+          <p className="content__no-found">{errorMessage}</p>
+        ) : (
+          pizzasData.map(item => <PizzaItem key={item.id} pizza={item} />)
+        )}
       </div>
     </div>
   );
