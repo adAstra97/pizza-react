@@ -1,14 +1,11 @@
+import { useContext } from 'react';
+
 import styles from './Search.module.scss';
+import { SearchContext } from '../../context/SearchContext';
 
-interface IHeaderProps {
-  searchValue: string;
-  setSearchValue: (value: string) => void;
-}
+export const Search: React.FC = () => {
+  const { searchValue, setSearchValue } = useContext(SearchContext);
 
-export const Search: React.FC<IHeaderProps> = ({
-  searchValue,
-  setSearchValue,
-}) => {
   return (
     <div className={styles.container}>
       <svg
