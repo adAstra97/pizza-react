@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Categories } from '../components/Categories/Categories';
 import { Sort } from '../components/Sort/Sort';
 import { IPizza, ISortType } from '../models/pizza.model';
 import { Skeleton } from '../components/PizzaItem/Skeleton';
 import PizzaItem from '../components/PizzaItem/PizzaItem';
+import { SearchContext } from '../context/SearchContext';
 
-interface IHomeProps {
-  searchValue: string;
-}
-
-export const Home: React.FC<IHomeProps> = ({ searchValue }) => {
+export const Home: React.FC = () => {
   const [pizzasData, setPizzasData] = useState<IPizza[]>([]);
   const [activeCategory, setActiveCategory] = useState<number>(0);
   const [activeSortType, setSortType] = useState<ISortType>({
@@ -20,6 +17,8 @@ export const Home: React.FC<IHomeProps> = ({ searchValue }) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const { searchValue } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
