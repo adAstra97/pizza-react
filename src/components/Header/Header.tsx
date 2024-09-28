@@ -2,19 +2,27 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/pizza-logo.svg';
 import { Search } from '../Search/Search';
 
-export const Header: React.FC = () => (
+interface IHeaderProps {
+  searchValue: string;
+  setSearchValue: (value: string) => void;
+}
+
+export const Header: React.FC<IHeaderProps> = ({
+  searchValue,
+  setSearchValue,
+}) => (
   <div className="header">
     <div className="container">
-      <Link to="/">
-        <div className="header__logo">
+      <div className="header__logo">
+        <Link to="/">
           <img width="38" src={logo} alt="Pizza logo" />
-          <div>
-            <h1>React Pizza</h1>
-            <p>самая вкусная пицца во вселенной</p>
-          </div>
+        </Link>
+        <div>
+          <h1>React Pizza</h1>
+          <p>самая вкусная пицца во вселенной</p>
         </div>
-      </Link>
-      <Search />
+      </div>
+      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <div className="header__cart">
         <Link to="/cart" className="button button--cart">
           <span>520 ₽</span>
