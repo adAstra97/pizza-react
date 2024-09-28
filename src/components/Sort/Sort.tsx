@@ -3,7 +3,7 @@ import upArrow from '../../assets/up-arrow.svg';
 import downArrow from '../../assets/bottom-arrow.svg';
 import { ISortType } from '../../models/pizza.model';
 
-interface SortProps {
+interface ISortProps {
   activeSortType: ISortType;
   isAscending: boolean;
   setSortType: (id: ISortType) => void;
@@ -16,7 +16,7 @@ const sortTypes: ISortType[] = [
   { name: 'алфавиту', sortBy: 'title' },
 ];
 
-export const Sort: React.FC<SortProps> = ({
+export const Sort: React.FC<ISortProps> = ({
   activeSortType,
   setSortType,
   isAscending,

@@ -5,7 +5,11 @@ import { IPizza, ISortType } from '../models/pizza.model';
 import { Skeleton } from '../components/PizzaItem/Skeleton';
 import PizzaItem from '../components/PizzaItem/PizzaItem';
 
-export const Home = () => {
+interface IHomeProps {
+  searchValue: string;
+}
+
+export const Home: React.FC<IHomeProps> = ({ searchValue }) => {
   const [pizzasData, setPizzasData] = useState<IPizza[]>([]);
   const [activeCategory, setActiveCategory] = useState<number>(0);
   const [activeSortType, setSortType] = useState<ISortType>({
@@ -37,6 +41,7 @@ export const Home = () => {
         }
 
         setIsLoading(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } catch (error) {
         if (error instanceof Error) {
           setErrorMessage(error.message);
@@ -48,6 +53,16 @@ export const Home = () => {
 
     fetchData();
   }, [activeCategory, activeSortType, isAscending]);
+
+  const pizzas = pizzasData
+    .filter(pizza => {
+      return pizza.title.toLowerCase().includes(searchValue.toLowerCase());
+    })
+    .map(item => <PizzaItem key={item.id} pizza={item} />);
+
+  const skeletons = [...new Array(10)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
 
   return (
     <div className="container">
@@ -66,11 +81,11 @@ export const Home = () => {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {isLoading ? (
-          [...new Array(10)].map((_, index) => <Skeleton key={index} />)
+          skeletons
         ) : errorMessage ? (
           <p className="content__no-found">{errorMessage}</p>
         ) : (
-          pizzasData.map(item => <PizzaItem key={item.id} pizza={item} />)
+          pizzas
         )}
       </div>
     </div>
