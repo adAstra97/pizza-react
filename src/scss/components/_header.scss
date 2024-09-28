@@ -1,25 +1,33 @@
-@import '../variables';
+@import "../variables";
 
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
 
   .container {
-    display: flex;
+    display: grid;
+    grid-template-areas: "logo search cart";
     align-items: center;
-    justify-content: space-between;
 
-    @media (max-width: 645px) {
-      flex-direction: column;
+    @media (max-width: 1125px) {
+      grid-template-areas:
+        "logo cart"
+        "search search";
+      row-gap: 20px;
+    }
 
-      .header__cart {
-        margin-top: 20px;
-      }
+    @media (max-width: 490px) {
+      grid-template-areas:
+        "logo"
+        "cart"
+        "search";
+      row-gap: 20px;
     }
   }
 
   &__logo {
     display: flex;
+    grid-area: logo;
 
     img {
       margin-right: 15px;
@@ -35,6 +43,16 @@
 
     p {
       color: #7b7b7b;
+    }
+  }
+
+  &__cart {
+    grid-area: cart;
+    width: fit-content;
+    justify-self: end;
+
+    @media (max-width: 490px) {
+      justify-self: center;
     }
   }
 }
