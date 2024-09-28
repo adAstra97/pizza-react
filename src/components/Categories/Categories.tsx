@@ -1,4 +1,4 @@
-interface CategoriesProps {
+interface ICategoriesProps {
   activeCategory: number;
   setActiveCategory: (id: number) => void;
 }
@@ -12,7 +12,7 @@ const caterogies: string[] = [
   'Закрытые',
 ];
 
-export const Categories: React.FC<CategoriesProps> = ({
+export const Categories: React.FC<ICategoriesProps> = ({
   activeCategory,
   setActiveCategory,
 }) => {
